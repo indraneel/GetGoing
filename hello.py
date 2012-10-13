@@ -4,14 +4,11 @@ import requests
 app = Flask(__name__)
 api_urls = {'nextbus': 'http://nextbus.nodejitsu.com/'}
 
-@app.route('/<stop>')
-def hello_world(stop):
-    r = requests.get('http://nextbus.nodejitsu.com/route/{}'.format(stop))
+@app.route('/stop/<route>')
+def hello_world(route):
+    r = requests.get('http://nextbus.nodejitsu.com/route/{}'.format(route))
     jsonData = json.loads(r.text)
-    print jsonData
-    return render_template('home.html', data=jsonData)
-
-
+    return render_template('home.html', data=jsonData[0]['predictions'][0]['minutes'])
 
 if __name__ == '__main__':
     app.run(debug=True)
