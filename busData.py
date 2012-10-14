@@ -23,7 +23,7 @@ stops = {"Scott Hall":{
 
 "Hill Center":{
 "tags":["hillw",
-"hilln"],
+"hilln"]},
 
 "Science Building":{
 "tags":["science"],
@@ -161,9 +161,24 @@ stops = {"Scott Hall":{
 
 "Colony House":{
 "tags":["colony"],
-}
+}}
 
 routes = {"a":{
+"stops":["scott",
+"stuactcntr",
+"lot48a",
+"stadium_a",
+"werblinback",
+"hillw",
+"science",
+"libofsciw",
+"buschse",
+"busch_a",
+"buells",
+"werblinm",
+"rutgerss_a"]},
+
+"A":{
 "stops":["scott",
 "stuactcntr",
 "lot48a",
@@ -189,6 +204,17 @@ routes = {"a":{
 "beck",
 "livingston_a"]},
 
+"B":{
+"stops":["quads",
+"werblinback",
+"hillw",
+"science",
+"libofsci",
+"buschse",
+"busch_a",
+"beck",
+"livingston_a"]},
+
 "c":{
 "stops":["werblinback",
 "hillw",
@@ -196,7 +222,37 @@ routes = {"a":{
 "hilln",
 "stadium_a"]},
 
+"C":{
+"stops":["werblinback",
+"hillw",
+"allison",
+"hilln",
+"stadium_a"]},
+
 "ee":{
+"stops":["scott",
+"traine",
+"patersons",
+"rockoff",
+"pubsafs",
+"cabaret",
+"redoak_a",
+"lipman",
+"foodsci",
+"biel",
+"henders",
+"katzenbach",
+"gibbons",
+"college_a",
+"pubsafn",
+"liberty",
+"patersonn",
+"trainn_a",
+"zimmerli",
+"stuactcntr",
+"rutgerss_a"]},
+
+"EE":{
 "stops":["scott",
 "traine",
 "patersons",
@@ -234,7 +290,36 @@ routes = {"a":{
 "stuactcntr",
 "rutgerss_a"]},
 
+"F":{
+"stops":["scott",
+"pubsafs",
+"cabaret",
+"redoak",
+"lipman",
+"foodsci",
+"biel",
+"henders",
+"katzenbach",
+"gibbons",
+"college_a",
+"stuactcntr",
+"rutgerss_a"]},
+
 "h":{
+"stops":["scott",
+"traine",
+"stuactcntr",
+"werblinm",
+"buel",
+"busch_a",
+"davidson",
+"libofsci",
+"allison",
+"hilln",
+"stadium_a",
+"rutgerss_a"]},
+
+"H":{
 "stops":["scott",
 "traine",
 "stuactcntr",
@@ -257,6 +342,15 @@ routes = {"a":{
 "beck",
 "livingston_a"]},
 
+"LX":{
+"stops":["quads",
+"rutgerss_a",
+"scott",
+"traine",
+"stuactcntr",
+"beck",
+"livingston_a"]},
+
 "rexb":{
 "stops":["lipman",
 "college_a",
@@ -269,7 +363,30 @@ routes = {"a":{
 "cabaret",
 "redoak_a"]},
 
-"rexl":{,
+"REXB":{
+"stops":["lipman",
+"college_a",
+"newstree",
+"hillw",
+"allison_a",
+"hilln",
+"pubsafs",
+"rockhall",
+"cabaret",
+"redoak_a"]},
+
+"rexl":{
+"stops":["lipman",
+"college_a",
+"newstree",
+"beck",
+"livingston_a",
+"pubsafs",
+"rockhall",
+"cabaret",
+"redoak_a"]},
+
+"REXL":{
 "stops":["lipman",
 "college_a",
 "newstree",
@@ -312,6 +429,39 @@ routes = {"a":{
 "zimmerli_2",
 "stuactcntrn_2",
 "rutgerss_a"]},
+
+"All Campus":{
+"stops":["scott",
+"traine_a",
+"stuactcntr",
+"lot48a",
+"werblinback",
+"hillw",
+"science",
+"libofsciw",
+"buschse",
+"busch_a",
+"beck",
+"livingston_a",
+"quads",
+"stuactcntrs",
+"pubsafs",
+"cabaret",
+"redoak_a",
+"lipman",
+"foodsci",
+"biel",
+"henders",
+"katzenbach",
+"gibbons",
+"college_a",
+"pubsafn",
+"liberty",
+"patersonn",
+"trainn_a",
+"zimmerli_2",
+"stuactcntrn_2",
+"rutgerss_a"]},
 # New Brunsquick 1 Shuttle
 "w1":{
 "stops":["nursscho",
@@ -319,8 +469,24 @@ routes = {"a":{
 "rutgerss_a",
 "scott",
 "traine_a"]},
+
+"New Brunsquick 1 Shuttle":{
+"stops":["nursscho",
+"colony",
+"rutgerss_a",
+"scott",
+"traine_a"]},
 # New Brunsquick 2 Shuttle
 "w2":{
+"stops":["nursscho",
+"trainn",
+"zimmerli",
+"stuactcntr",
+"rutgerss_a",
+"colony",
+"traine_a"]},
+
+"New Brunsquick 2 Shuttle":{
 "stops":["nursscho",
 "trainn",
 "zimmerli",
@@ -362,6 +528,38 @@ routes = {"a":{
 "zimmerli_2",
 "stuactcntrn_2"]},
 
+"Weekend 1": {
+"stops":["rutgerss",
+"scott",
+"traine",
+"stuactcntr",
+"lot48a",
+"werblinback",
+"hillw",
+"science",
+"libofsciw",
+"buschse",
+"busch",
+"beck",
+"livingston",
+"quads",
+"stuactcntrs",
+"pubsafs",
+"cabaret",
+"redoak",
+"lipman",
+"foodsci",
+"biel",
+"henders",
+"katzenbach",
+"gibbons",
+"college",
+"pubsafn",
+"liberty",
+"patersonn",
+"trainn",
+"zimmerli_2",
+"stuactcntrn_2"]},
 
 "wknd2":{
 "stops":["rutgerss",
@@ -387,4 +585,31 @@ routes = {"a":{
 "davidson",
 "libofsci",
 "allison",
-"hilln"]}}
+"hilln"]},
+
+"Weekend 2":{
+"stops":["rutgerss",
+"scott",
+"traine",
+"patersons",
+"rockoff",
+"pubsafs",
+"cabaret",
+"redoak",
+"lipman",
+"foodsci",
+"biel",
+"henders",
+"katzenbach",
+"gibbons",
+"college",
+"stuactcntrn",
+"beck",
+"livingston",
+"quads",
+"busch",
+"davidson",
+"libofsci",
+"allison",
+"hilln"]}
+}
