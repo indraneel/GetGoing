@@ -3,15 +3,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     {% block head %}
-    <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}{% endblock %} - My Webpage</title>
+    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css" />
+    <title>{% block title %}{% endblock %} - GetGoing</title>
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="content">
+	<div class="row">
+	    <div class="eleven columns centered">
+		<div class="eleven columns centered">
+		    <h1>Get Going!</h1>
+		    <h4 class="subheader">Because men lie, women lie, and NextBus... does too.</h4>
+		</div>
+		<div class="panel">
+		    <form>
+			<input type="text" placeholder="Where are you?" />
+			<input type="text" placeholder="Where do you need to go?" />
+			<input type="text" placeholder="When do you need to get there?" />
+			<input type="text" placeholder="Enter your number to get texted a reminder!" />
+			<input type="submit" text="Go!" class="large success button" />
+		    </form>
+		</div>
+	    </div>
+	</div>
+    </div>
     <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+	{% block footer %}
+	<div class="five columns centered">
+	    &copy; Copyright 2012 by <a href="/">Lavi and Indraneel</a>.
+	</div>
         {% endblock %}
     </div>
 </body>
