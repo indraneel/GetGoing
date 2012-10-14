@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import simplejson as json
 import requests
 from busData import stops, routes, shortbus
@@ -74,10 +74,26 @@ def getWalkTimeAd(stop, address):
     time = int(strtime.split(' ')[0])
     return time
 
+@app.route('/')
+def home():
+    return render_template('base.html')
 
-@app.route('/start=<start>&destination=<dest>')
-def nextBus(start, dest):
-    s = requests.get('http://nextbus.nodejitsu.com/stop/{}'.format(start))
+@app.route('/search', methods=['POST', 'GET'])
+def nextBus():
+
+    if request.method == 'POST':
+        startLoc = request.form.get('start', '')
+        print(startLoc)
+        destLoc = request.form.get('destination', '')
+        print(destLoc)
+    else:
+        startLoc = request.args.get('start', '')
+        print(startLoc)
+        destLoc = request.args.get('destination', '')
+        print(destLoc)        
+
+
+    s = requests.get('http://nextbus.nodejitsu.com/stop/'+startLoc)
     # d = requests.get('http://nextbus.nodejitsu.com/stop/{}'.format(dest))
     jsonData = json.loads(s.text)
     next = 100000 # next bus eta
@@ -88,10 +104,10 @@ def nextBus(start, dest):
             continue
         pred = int(b['predictions'][0]['minutes'])
         bus = b['title']
-        if (not destOnRoute(bus, dest)):
+        if (not destOnRoute(bus, destLoc)):
             continue
          
-        eta2 = getDestETA(bus, start, dest)
+        eta2 = getDestETA(bus, startLoc, destLoc)
         print(bus) #bus
         print(eta2) #bus ETA
         if (eta2 < eta):
@@ -100,9 +116,11 @@ def nextBus(start, dest):
             print('faster bus')
             nextbus = b['title']
 
-    walk1 = getWalkTime(40.48474,  -74.43672, start)
+    walk1 = getWalkTime(40.48474,  -74.43672, startLoc)
 
-    return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=dest, dmins=eta, walk1 = walk1)
+    leave = next - walk1 - 1
+
+    return render_template('nextdest.html', bus=nextbus, start=startLoc, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
 if __name__ == '__main__':
     app.run(debug=True)

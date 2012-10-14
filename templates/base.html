@@ -12,16 +12,16 @@
       <div class="eleven columns centered">
         <div class="panel">
             <div class="nine columns centered">
-                <h1>/GET/Going</h1>
+                <h1><a href="/">/GET/Going</a></h1>
                 <h5 class="subhead">NextBus++</h5>
             </div>
         </div>
         <div class="panel">
             <div class="nine columns centered">
-                <form name="searchForm">  
-                    <input type="text" placeholder="Where are you?" id="start">    
-                    <input type="text" placeholder="Where are you going?" id="stop">  
-                    <input type="time" placeholder="What time do you have to be there?" id="when">
+                <form name="searchForm" action="/search" method="GET">  
+                    <input type="text" placeholder="Where are you?" name="start" id="start">    
+                    <input type="text" placeholder="Where are you going?" name="destination" id="destination">  
+                    <!--<input type="time" placeholder="What time do you have to be there?" id="when">-->
                     <label for="checkbox1">
                         <input type="checkbox" id="checkbox1">
                         <span class="custom checkbox"></span> Text Me a Reminder!
@@ -35,11 +35,7 @@
   </div>
   <div id="footer">
     {% block footer %}
-    <div class="five columns centered">
-      <div class="panel">
-        <div class="five columns centered">by Lavi & <a href="http://indraneelpurohit.com">Indraneel</a>.</div>
-      </div>
-    </div>
+    <div class="seven columns centered">by Lavi & <a href="http://indraneelpurohit.com">Indraneel</a>.</div>
     {% endblock %}
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
