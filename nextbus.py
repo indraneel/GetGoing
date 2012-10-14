@@ -20,7 +20,7 @@ def nextBus(stop):
     		next = pred
     		print('faster bus')
     		bus = b['title']
-    return render_template('next.html', bus=bus, mins=next)
+    return render_template('base.html', bus=bus, mins=next)
 
 if __name__ == '__main__':
     app.run(debug=True)
