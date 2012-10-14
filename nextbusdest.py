@@ -23,7 +23,7 @@ def destOnRoute(route, dest):
     # print('not on route')
     return False 
 
-def getDestETA(route, start, dest):
+def getDestETA(route, start, dest, busN=0):
     jsonRt = requests.get('http://nextbus.nodejitsu.com/route/{}'.format(shortbus[route]))
     rt = json.loads(jsonRt.text)
     sindex = -1
@@ -39,7 +39,7 @@ def getDestETA(route, start, dest):
         raise NameError('start or destination not found')
 
     j = sindex
-    busNo = 0
+    busNo = busN
     eta = int(rt[j]['predictions'][busNo]['minutes'])
     while (j != dindex):
         j += 1
@@ -115,6 +115,68 @@ def nextBus():
             eta = eta2
             print('faster bus')
             nextbus = b['title']
+
+    walk1 = getWalkTime(40.48474,  -74.43672, startLoc)
+
+    leave = next - walk1 - 1
+
+    return render_template('nextdest.html', bus=nextbus, start=startLoc, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
+
+@app.route('/geo', methods=['POST', 'GET'])
+def nextBus():
+
+    if request.method == 'POST':
+        lat = request.form.get('lat', '')
+        print(lat)
+        lon = request.form.get('lon', '')
+        print(lon)
+        destLoc = request.form.get('destination', '')
+        print(destLoc)
+    else:
+        startLoc = request.args.get('start', '')
+        print(startLoc)
+        destLoc = request.args.get('destination', '')
+        print(destLoc)        
+
+    nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{0}/{1}'.format(lat, lon))
+    nearby = json.loads(nearjson.text)
+    next = 100000 # next bus eta
+    eta = 100000 # destination eta
+    nextbus = ''
+    start = ''
+    walk1 = 100000
+
+    for stop in nearby:
+        walktemp = getWalkTime(lat, lon, stop)
+
+        sJSON = requests.get('http://nextbus.nodejitsu.com/stop/'+startLoc)
+        buses = json.loads(sJSON.text)
+        for b in buses:
+            if (b['predictions']==None):
+                continue
+            pred = int(b['predictions'][0]['minutes'])
+            bus = b['title']
+            if (not destOnRoute(bus, destLoc)):
+                continue
+            busNo = 0
+            while(pred < walktemp):
+                busNo += 1
+                try:
+                    newEta = int(rt[j]['predictions'][busNo]['minutes'])
+                except IndexError:
+                    print('Index Error at j={0} busNo={1}'.format(j, busNo))
+                    return 100000
+             
+            eta2 = getDestETA(bus, startLoc, destLoc, busNo)
+            print(bus) #bus
+            print(eta2) #bus ETA
+            if (eta2 < eta):
+                next = pred
+                eta = eta2
+                print('faster bus')
+                nextbus = b['title']
+                start = stop
+                walk1 = walktemp
 
     walk1 = getWalkTime(40.48474,  -74.43672, startLoc)
 
