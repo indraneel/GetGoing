@@ -250,4 +250,5 @@ def nextBus():
 #     return render_template('nextdest.html', bus=nextbus, start=startLoc, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
