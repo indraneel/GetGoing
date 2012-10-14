@@ -45,22 +45,43 @@ def getDestETA(route, start, dest):
         j += 1
         if (j >= len(rt)):
             j = 0
-        newEta = int(rt[j]['predictions'][busNo]['minutes'])
+        try:
+            newEta = int(rt[j]['predictions'][busNo]['minutes'])
+        except IndexError:
+            print('Index Error at j={0} busNo={1}'.format(j, busNo))
+            return 100000
         while (newEta < eta):
             busNo += 1
-            newEta = int(rt[j]['predictions'][busNo]['minutes'])
+            try:
+                newEta = int(rt[j]['predictions'][busNo]['minutes'])
+            except IndexError:
+                print('Index Error at j={0} busNo={1}'.format(j, busNo))
+                return 100000
         eta = newEta
     return eta
 
+def getWalkTime(lat, lon, stop):
+    jsonGmaps = requests.get('http://maps.googleapis.com/maps/api/distancematrix/json?origins={0},%20{1}&destinations={2},%20{3}&mode=walking&sensor=false'.format(lat, lon, float(stops[stop]['lat']), float(stops[stop]['lon'])))
+    gmaps = json.loads(jsonGmaps.text)
+    strtime = gmaps['rows'][0]['elements'][0]['duration']['text']
+    time = int(strtime.split(' ')[0])
+    return time
 
-@app.route('/<start>')
-def nextBus(start):
+def getWalkTimeAd(stop, address):
+    jsonGmaps = requests.get('http://maps.googleapis.com/maps/api/distancematrix/json?origins={0},%20{1}&destinations={2}&mode=walking&sensor=false'.format(float(stops[stop]['lat']), float(stops[stop]['lon']), address))
+    gmaps = json.loads(jsonGmaps.text)
+    strtime = gmaps['rows'][0]['elements'][0]['duration']['text']
+    time = int(strtime.split(' ')[0])
+    return time
+
+
+@app.route('/start=<start>&destination=<dest>')
+def nextBus(start, dest):
     s = requests.get('http://nextbus.nodejitsu.com/stop/{}'.format(start))
     # d = requests.get('http://nextbus.nodejitsu.com/stop/{}'.format(dest))
     jsonData = json.loads(s.text)
-    dest = "Hill Center"
-    next = 1000 # next bus eta
-    eta = 1000 # destination eta
+    next = 100000 # next bus eta
+    eta = 100000 # destination eta
     nextbus = ''
     for b in jsonData:
         if (b['predictions']==None):
@@ -79,7 +100,9 @@ def nextBus(start):
             print('faster bus')
             nextbus = b['title']
 
-    return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=dest, dmins=eta)
+    walk1 = getWalkTime(40.48474,  -74.43672, start)
+
+    return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=dest, dmins=eta, walk1 = walk1)
 
 if __name__ == '__main__':
     app.run(debug=True)
