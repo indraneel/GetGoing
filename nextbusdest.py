@@ -91,8 +91,6 @@ def nextBus():
         print(startLoc)
         destLoc = request.args.get('destination', '')
         print(destLoc)
-        lat = request.args.get('latitude', '')        
-        longi = request.args.get('longitude', '')
 
 
     s = requests.get('http://nextbus.nodejitsu.com/stop/'+startLoc)
