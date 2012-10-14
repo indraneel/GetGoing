@@ -98,7 +98,7 @@ def nextBus():
         lat = request.form.get('latitude', '')
         lon = request.form.get('longitude', '')
 
-    if(isinstance(lat, float)):
+    if(lat != ''):
         nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{0}/{1}'.format(lat, lon))
         nearby = json.loads(nearJSON.text)
     else:
