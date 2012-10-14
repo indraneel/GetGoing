@@ -131,7 +131,7 @@ def nextBus():
                 #print('not on route')
                 continue
             busNo = 0
-            while(pred < walktemp):
+            while(pred < walktemp-1):
                 busNo += 1
                 try:
                     pred = int(b['predictions'][busNo]['minutes'])
@@ -153,7 +153,8 @@ def nextBus():
     # walk1 = getWalkTime(40.48474, -74.43672, startLoc)
 
     leave = next - walk1 - 1
-
+    if (leave < 0):
+        leave = "OH SHIT LEAVE NOW!"
     return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
 
