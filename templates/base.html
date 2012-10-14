@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css">
+    <title>GetGoing</title>
+    {% endblock %}
+  </head>
+<body>
+  <div id="content">
+    <div class="row">
+      <div class="eleven columns centered">
+        <div class="panel">
+            <div class="nine columns centered">
+                <h1>/GET/Going</h1>
+                <h5 class="subhead">NextBus++</h5>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="nine columns centered">
+                <form name="searchForm">  
+                    <input type="text" placeholder="Where are you?" id="start">    
+                    <input type="text" placeholder="Where are you going?" id="stop">  
+                    <input type="time" placeholder="What time do you have to be there?" id="when">
+                    <label for="checkbox1">
+                        <input type="checkbox" id="checkbox1">
+                        <span class="custom checkbox"></span> Text Me a Reminder!
+                    </label>
+                    <input type="submit" class="large success button" text="/GET/"></input>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    {% block footer %}
+    <div class="five columns centered">
+      <div class="panel">
+        <div class="five columns centered">by Lavi & <a href="http://indraneelpurohit.com">Indraneel</a>.</div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>
+    // $(function() {
+    //     function log( message ) {
+    //         $( "<div/>" ).text( message ).prependTo( "#log" );
+    //         $( "#log" ).attr( "scrollTop", 0 );
+    //     }
+ 
+    //     $.ajax({
+    //         url: "/static/maps.xml",
+    //         dataType: "xml",
+    //         success: function( xmlResponse ) {
+    //             alert("XML IS PARSE");
+    //             var data = $( "maps", xmlResponse ).map(function() {
+    //                 return {
+    //                     place: $( "place", this ).text(),
+    //                     campus: $( "campus", this ).text()
+    //                 };
+    //                 alert(data);
+    //             }).get();
+    //             $( "#start" ).autocomplete({
+    //                 source: data,
+    //                 minLength: 0,
+    //                 select: function( event, ui ) {
+    //                     log( ui.item ?
+    //                         "Selected: " + ui.item.value + ", geonameId: " + ui.item.id :
+    //                         "Nothing selected, input was " + this.value );
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+    </script>
+   <script>
+    // $(document).ready(function() {
+    //     var myArr = [];
+
+    //     function parseXML(){
+    //         //find every query value
+    //         alert("it's working!");
+    //         $.get("/static/mapz.xml", {}, function(xml){
+    //             $('maps', xml).each(function(i) {
+    //                 myArr.push($(this).find("place").text());
+    //             })
+    //         });
+    //         // $(xml).find("maps").each(function()
+    //         // {
+    //         // });
+    //     }
+
+    //     function setupAC(){
+    //         $('input#start').autocomplete({
+    //             source: myArr,
+    //             minLength: 1,
+    //             select: function(event, ui) {
+    //                 $("input#start").val(ui.item.value);
+    //                 $("#searchForm").submit();
+    //             }
+    //         });
+    //     }
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "/static/maps.xml",
+    //         dataType: "xml",
+    //         success: parseXML,
+    //         complete: setupAC,
+    //         failure: function(data) {
+    //             alert("XML File could not be found.");
+    //         }
+    //     });
+    // });
+   </script>
+</body>
