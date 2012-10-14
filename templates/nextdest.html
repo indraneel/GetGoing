@@ -9,24 +9,28 @@
 <body>
   <div id="content">
     <div class="row">
-      <div class="eleven columns centered">
+      <div class="nine columns centered">
         <div class="panel">
-            <div class="nine columns centered">
+            <div class="eleven columns centered">
                 <h1><a href="/">/GET/Going</a></h1>
                 <h5 class="subhead">NextBus++</h5>
             </div>
         </div>
       </div>
-      <div class="seven columns centered">
-        <div class="panel">
-            Your stop is<h2>{{start}}</h2>
-            Next bus is <h4>{{bus}}</h4> in <h4>{{smins}} minutes</h4>.
-            Will get to {{dest}} in {{dmins}} minutes.</br>
-            </br>
-            It will take {{walk1}} minutes to walk to your stop.<br />
-            You should Get Going in approximately {{leave}} minutes!
+    </div>
+    <div class="row">
+        <div class="seven columns centered">
+            <div class="panel">
+                <form name="searchForm" action="/search" method="GET">
+                  Your stop is <b>{{start}}</b><br /><br />
+                  You'll be taking the <b>{{bus}}</b> bus in <b>{{smins}} minutes</b><br /><br />
+                  It'll get to <b>{{dest}}</b> in <b>{{dmins}}</b> minutes.<br /><br />
+                  </br>
+                  It will take <b>{{walk1}}</b> minutes to walk to your stop.<br /><br />
+                  So you should <b><em class="subhead">Get Going</em></b> in approximately <b>{{leave}}</b> minutes!
+                </form>
+            </div>
         </div>
-      </div>
     </div>
   </div>
   <div id="footer">

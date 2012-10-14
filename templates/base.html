@@ -6,19 +6,25 @@
     <title>GetGoing</title>
     {% endblock %}
   </head>
-<body>
+<body onload="initGeo();">
   <div id="content">
     <div class="row">
-      <div class="eleven columns centered">
+      <div class="nine columns centered">
         <div class="panel">
-            <div class="nine columns centered">
+            <div class="eleven columns centered">
                 <h1><a href="/">/GET/Going</a></h1>
                 <h5 class="subhead">NextBus++</h5>
             </div>
         </div>
-        <div class="panel">
-            <div class="nine columns centered">
-                <form name="searchForm" action="/search" method="GET">  
+      </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="seven columns centered">
+            <div class="panel">
+                <form name="searchForm" action="/search" method="GET">
+                    <input type="hidden" name="latitude" id="latitude">
+                    <input type="hidden" name="longitude" id="longitude">
                     <input type="text" placeholder="Where are you?" name="start" id="start">    
                     <input type="text" placeholder="Where are you going?" name="destination" id="destination">  
                     <!--<input type="time" placeholder="What time do you have to be there?" id="when">-->
@@ -30,7 +36,6 @@
                 </form>
             </div>
         </div>
-      </div>
     </div>
   </div>
   <div id="footer">
@@ -39,6 +44,27 @@
     {% endblock %}
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>
+    function initGeo(){
+        if ( navigator.geolocation ){
+            navigator.geolocation.getCurrentPosition( success, fail );
+        }
+        else {
+            alert ("Your browser does not support geolocation or you denied us access to it!")
+        }
+    }
+
+    function success(position){
+        $(#latitude).val(position.coords.latitude);
+        alert($(#latitude));
+        $(#longitude).val(position.coords.longitude);
+        alert($(#longitude));
+    }
+
+    function fail(){
+        alert("Error! Coordinates not found.");
+    }
+  </script>
   <script>
     // $(function() {
     //     function log( message ) {
