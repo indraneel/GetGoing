@@ -613,3 +613,19 @@ routes = {"a":{
 "allison",
 "hilln"]}
 }
+
+shortbus = {'A':'a',
+'B':'b',
+'C':'c',
+'EE':'ee',
+'F':'f',
+'H':'h',
+'LX':'lx',
+'REXB':'rexb',
+'REXL':'rexl',
+'All Campus':'s',
+'New Brunsquick 1 Shuttle':'w1',
+'New Brunsquick 2 Shuttle':'w2',
+'Weekend 1':'wknd1',
+'Weekend 2':'wknd2'
+}
