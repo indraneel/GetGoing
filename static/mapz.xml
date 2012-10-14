@@ -1,0 +1,23 @@
+<rutgersmap>
+  <!-- Table maps -->
+    <maps>
+        <id>1</id>
+        <place>Davidson Hall</place>
+        <bnum>3567</bnum>
+        <address>96 Davidson Rd, Piscataway, NJ 08854</address>
+        <lat>40.526147</lat>
+        <long>-74.457951</long>
+        <type>default</type>
+        <campus>busch</campus>
+        <access_b>0</access_b>
+        <access_f>0</access_f>
+        <access_r>0</access_r>
+        <wired>0</wired>
+        <wireless>0</wireless>
+        <Lastmod>2009-07-15</Lastmod>
+        <comment></comment>
+        <bus>A,B,H</bus>
+        <history>Formerly Davidson Dining Hall.</history>
+        <abbr></abbr>
+    </maps>
+</rutgersmap>

@@ -1,5 +1,43 @@
-Your stop is {{start}}. </br> 
-Next bus is {{bus}} in {{smins}} minutes.</br>
-Will get to {{dest}} in {{dmins}} minutes.</br>
-</br>
-It will take {{walk1}} minutes to walk to your stop.
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css">
+    <title>GetGoing</title>
+    {% endblock %}
+  </head>
+<body>
+  <div id="content">
+    <div class="row">
+      <div class="eleven columns centered">
+        <div class="panel">
+            <div class="nine columns centered">
+                <h1><a href="/">/GET/Going</a></h1>
+                <h5 class="subhead">NextBus++</h5>
+            </div>
+        </div>
+      </div>
+      <div class="seven columns centered">
+        <div class="panel">
+            Your stop is<h2>{{start}}</h2>
+            Next bus is <h4>{{bus}}</h4> in <h4>{{smins}} minutes</h4>.
+            Will get to {{dest}} in {{dmins}} minutes.</br>
+            </br>
+            It will take {{walk1}} minutes to walk to your stop.<br />
+            You should Get Going in approximately {{leave}} minutes!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    {% block footer %}
+    <div class="five columns centered">
+      <div class="panel">
+        <div class="five columns centered">by Lavi & <a href="http://indraneelpurohit.com">Indraneel</a>.</div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</body>
+

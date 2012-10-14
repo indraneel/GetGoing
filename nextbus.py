@@ -4,6 +4,10 @@ import requests
 app = Flask(__name__)
 api_urls = {'nextbus': 'http://nextbus.nodejitsu.com/'}
 
+@app.route('/')
+def main():
+    return render_template('base.html')
+
 @app.route('/stop/<stop>')
 def nextBus(stop):
     r = requests.get('http://nextbus.nodejitsu.com/stop/{}'.format(stop))
