@@ -1,1 +1,1 @@
-web: python nextbusdest.py
+web: python nextbusdest.py -b "0.0.0.0:$PORT"
