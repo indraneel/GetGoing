@@ -102,7 +102,7 @@ def nextBus():
         nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{0}/{1}'.format(lat, lon))
         nearby = json.loads(nearJSON.text)
     else:
-        nearby = [destLoc]
+        nearby = [startLoc]
         lat = float(stops[startLoc]['lat'])
         lon = float(stops[startLoc]['lon'])
     
@@ -115,14 +115,17 @@ def nextBus():
     for stop in nearby:
         walktemp = getWalkTime(lat, lon, stop)
 
-        sJSON = requests.get('http://nextbus.nodejitsu.com/stop/'+startLoc)
+        print(stop)
+        sJSON = requests.get('http://nextbus.nodejitsu.com/stop/'+stop)
         buses = json.loads(sJSON.text)
         for b in buses:
             if (b['predictions']==None):
+                print('no predictions')
                 continue
             pred = int(b['predictions'][0]['minutes'])
             bus = b['title']
             if (not destOnRoute(bus, destLoc)):
+                print('not on route')
                 continue
             busNo = 0
             while(pred < walktemp):
@@ -144,7 +147,7 @@ def nextBus():
                 start = stop
                 walk1 = walktemp
 
-    walk1 = getWalkTime(40.48474, -74.43672, startLoc)
+    # walk1 = getWalkTime(40.48474, -74.43672, startLoc)
 
     leave = next - walk1 - 1
 
