@@ -142,7 +142,7 @@ def nextBus():
             eta2 = getDestETA(bus, stop, destLoc, busNo)
             #print(bus) #bus
             #print(eta2) #bus ETA
-            if (eta2 < eta):
+            if (eta2 < eta or (eta2 == eta and walktemp < walk1)):
                 next = pred
                 eta = eta2
                 #print('faster bus')
@@ -154,7 +154,7 @@ def nextBus():
 
     leave = next - walk1 - 1
     if (leave < 0):
-        leave = "OH SHIT LEAVE NOW!"
+        leave = "OH SHIT RUN"
     return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
 
