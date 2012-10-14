@@ -163,7 +163,7 @@ stops = {"Scott Hall":{
 "tags":["colony"],
 }
 
-routes = {"A":{
+routes = {"a":{
 "stops":["scott",
 "stuactcntr",
 "lot48a",
@@ -178,7 +178,7 @@ routes = {"A":{
 "werblinm",
 "rutgerss_a"]},
 
-"B":{
+"b":{
 "stops":["quads",
 "werblinback",
 "hillw",
@@ -189,14 +189,14 @@ routes = {"A":{
 "beck",
 "livingston_a"]},
 
-"C":{
+"c":{
 "stops":["werblinback",
 "hillw",
 "allison",
 "hilln",
 "stadium_a"]},
 
-"EE":{
+"ee":{
 "stops":["scott",
 "traine",
 "patersons",
@@ -219,7 +219,7 @@ routes = {"A":{
 "stuactcntr",
 "rutgerss_a"]},
 
-"F":{
+"f":{
 "stops":["scott",
 "pubsafs",
 "cabaret",
@@ -234,7 +234,7 @@ routes = {"A":{
 "stuactcntr",
 "rutgerss_a"]},
 
-"H":{
+"h":{
 "stops":["scott",
 "traine",
 "stuactcntr",
@@ -248,7 +248,7 @@ routes = {"A":{
 "stadium_a",
 "rutgerss_a"]},
 
-"LX":{
+"lx":{
 "stops":["quads",
 "rutgerss_a",
 "scott",
@@ -257,7 +257,7 @@ routes = {"A":{
 "beck",
 "livingston_a"]},
 
-"REXB":{
+"rexb":{
 "stops":["lipman",
 "college_a",
 "newstree",
@@ -269,7 +269,7 @@ routes = {"A":{
 "cabaret",
 "redoak_a"]},
 
-"REXL":{,
+"rexl":{,
 "stops":["lipman",
 "college_a",
 "newstree",
@@ -279,8 +279,8 @@ routes = {"A":{
 "rockhall",
 "cabaret",
 "redoak_a"]},
-
-"All Campus":{
+# All Campus
+"s":{
 "stops":["scott",
 "traine_a",
 "stuactcntr",
@@ -312,15 +312,15 @@ routes = {"A":{
 "zimmerli_2",
 "stuactcntrn_2",
 "rutgerss_a"]},
-
-"New Brunsquick 1 Shuttle":{
+# New Brunsquick 1 Shuttle
+"w1":{
 "stops":["nursscho",
 "colony",
 "rutgerss_a",
 "scott",
 "traine_a"]},
-
-"New Brunsquick 2 Shuttle":{
+# New Brunsquick 2 Shuttle
+"w2":{
 "stops":["nursscho",
 "trainn",
 "zimmerli",
@@ -329,7 +329,7 @@ routes = {"A":{
 "colony",
 "traine_a"]},
 
-"Weekend 1": {
+"wknd1": {
 "stops":["rutgerss",
 "scott",
 "traine",
@@ -363,7 +363,7 @@ routes = {"A":{
 "stuactcntrn_2"]},
 
 
-"Weekend 2":{
+"wknd2":{
 "stops":["rutgerss",
 "scott",
 "traine",
