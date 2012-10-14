@@ -1,37 +1,42 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<!doctype html>
+<html>
+  <head>
     {% block head %}
-    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css" />
-    <title>{% block title %}{% endblock %} - GetGoing</title>
+    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css">
+    <title>GetGoing</title>
     {% endblock %}
-</head>
+  </head>
 <body>
-    <div id="content">
-	<div class="row">
-	    <div class="eleven columns centered">
-		<div class="eleven columns centered">
-		    <h1>Get Going!</h1>
-		    <h4 class="subheader">Because men lie, women lie, and NextBus... does too.</h4>
-		</div>
-		<div class="panel">
-		    <form>
-			<input type="text" placeholder="Where are you?" />
-			<input type="text" placeholder="Where do you need to go?" />
-			<input type="text" placeholder="When do you need to get there?" />
-			<input type="text" placeholder="Enter your number to get texted a reminder!" />
-			<input type="submit" text="Go!" class="large success button" />
-		    </form>
-		</div>
-	    </div>
-	</div>
+  <div id="content">
+    <div class="row">
+      <div class="eleven columns centered">
+        <div class="panel">
+          <h1>/GET/ Going!</h1>
+          <h4 class="subhead">Because NextBus doesn't tell the whole truth.</h4>
+        </div>
+        <div class="panel">
+          <form>
+            <input type="text" placeholder="Where are you?">
+            <input type="text" placeholder="Where are you going?">
+            <input type="text" placeholder="What time do you have to be there?">
+            <label for="checkbox1">
+              <input type="checkbox" id="checkbox1">
+              <span class="custom checkbox"></span> Text Me a Reminder!
+            </label>
+
+            <input type="submit" class="large success button">
+          </form>
+        </div>
+      </div>
     </div>
-    <div id="footer">
-	{% block footer %}
-	<div class="five columns centered">
-	    &copy; Copyright 2012 by <a href="/">Lavi and Indraneel</a>.
-	</div>
-        {% endblock %}
+  </div>
+  <div id="footer">
+    {% block footer %}
+    <div class="five columns centered">
+      <div class="panel">
+        &copy; Copyright 2012 by <a href="/">Lavi & Indraneel</a>.
+      </div>
     </div>
+    {% endblock %}
+  </div>
 </body>
