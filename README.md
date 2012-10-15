@@ -1,6 +1,8 @@
 GetGoing
 ========
 
+![You can see a screenshot of it here](http://i.imgur.com/dpaoz.png)
+
 What it does
 ------------
 
