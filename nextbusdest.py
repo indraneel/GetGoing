@@ -8,20 +8,20 @@ app = Flask(__name__)
 api_urls = {'nextbus': 'http://nextbus.nodejitsu.com/'}
 
 def getTagStop(tag):
-    # #print('tag is {}'.format(tag))
+    #print('tag is {}'.format(tag))
     for s in stops:
-        # #print(stops[s]['tags'])
+        #print(stops[s]['tags'])
         if (tag in stops[s]['tags']):
             return s
     return 'not found'
 
 def destOnRoute(route, dest):
     for s in routes[str(route)]['stops']:
-        # #print('{0} {1}'.format(dest, s))
+        #print('{0} {1}'.format(dest, s))
         if (dest == getTagStop(s)):
-            # #print('on route')
+            #print('on route')
             return True
-    # #print('not on route')
+    #print('not on route')
     return False 
 
 def getDestETA(route, start, dest, busN=0):
@@ -36,7 +36,7 @@ def getDestETA(route, start, dest, busN=0):
             dindex = i
 
     if(sindex == -1 or dindex == -1):
-        #print('start or destination not found')
+        print('start or destination not found')
         raise NameError('start or destination not found')
 
     j = sindex
@@ -49,14 +49,14 @@ def getDestETA(route, start, dest, busN=0):
         try:
             newEta = int(rt[j]['predictions'][busNo]['minutes'])
         except IndexError:
-            #print('Index Error at j={0} busNo={1}'.format(j, busNo))
+            print('Index Error at j={0} busNo={1}'.format(j, busNo))
             return 100000
         while (newEta < eta):
             busNo += 1
             try:
                 newEta = int(rt[j]['predictions'][busNo]['minutes'])
             except IndexError:
-                #print('Index Error at j={0} busNo={1}'.format(j, busNo))
+                print('Index Error at j={0} busNo={1}'.format(j, busNo))
                 return 100000
         eta = newEta
     return eta
@@ -84,27 +84,28 @@ def nextBus():
 
     if request.method == 'POST':
         startLoc = request.form.get('start', '')
-        #print(startLoc)
+        print(startLoc)
         destLoc = request.form.get('destination', '')
-        #print(destLoc)
+        print(destLoc)
         lat = request.form.get('latitude', '')
-        #print(lat)
+        print(lat)
         lon = request.form.get('longitude', '')
-        #print(lon)
+        print(lon)
     else:
         startLoc = request.args.get('start', '')
-        #print(startLoc)
+        print(startLoc)
         destLoc = request.args.get('destination', '')
-        #print(destLoc)        
+        print(destLoc)        
         lat = request.args.get('latitude', '')
-        #print(lat)
+        print(lat)
         lon = request.args.get('longitude', '')
-        #print(lon)
+        print(lon)
 
     # if(true):
-    #print(lat)
+    # print(lat)
     nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{}/{}'.format(lat, lon))
     nearby = json.loads(nearJSON.text)
+    # print(nearby)
     # else:
     #     nearby = [startLoc]
     #     lat = float(stops[startLoc]['lat'])
@@ -119,17 +120,19 @@ def nextBus():
     for stop in nearby:
         walktemp = getWalkTime(lat, lon, stop)
 
-        #print(stop)
+        # print(stop)
         sJSON = requests.get('http://nextbus.nodejitsu.com/stop/'+stop)
         buses = json.loads(sJSON.text)
+        # print(buses)
         for b in buses:
+            # print (b)
             if (b['predictions']==None):
-                #print('no predictions')
+                # print('no predictions')
                 continue
             pred = int(b['predictions'][0]['minutes'])
             bus = b['title']
             if (not destOnRoute(bus, destLoc)):
-                #print('not on route')
+                # print('not on route')
                 continue
             busNo = 0
             while(pred < walktemp-1):
@@ -137,25 +140,27 @@ def nextBus():
                 try:
                     pred = int(b['predictions'][busNo]['minutes'])
                 except IndexError:
-                    #print('Index Error at j={0} busNo={1}'.format(j, busNo))
+                    print('Index Error at j={0} busNo={1}'.format(j, busNo))
                     return 100000
-             
+            
             eta2 = getDestETA(bus, stop, destLoc, busNo)
-            #print(bus) #bus
-            #print(eta2) #bus ETA
+            # print(bus) #bus
+            # print(eta2) #bus ETA
             if (eta2 < eta or (eta2 == eta and walktemp < walk1)):
                 next = pred
                 eta = eta2
-                #print('faster bus')
+                # print('faster bus')
                 nextbus = b['title']
                 start = stop
                 walk1 = walktemp
+        # print('checked buses in stop {}'.format(stop))
 
     # walk1 = getWalkTime(40.48474, -74.43672, startLoc)
-
+    # print('loop done')
     leave = next - walk1 - 1
     if (leave < 0):
         leave = "OH SHIT RUN"
+    # print('done')
     return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
 
@@ -174,12 +179,12 @@ def nextBus():
     #         continue
          
     #     eta2 = getDestETA(bus, startLoc, destLoc)
-    #     #print(bus) #bus
-    #     #print(eta2) #bus ETA
+        #print(bus) #bus
+        #print(eta2) #bus ETA
     #     if (eta2 < eta):
     #         next = pred
     #         eta = eta2
-    #         #print('faster bus')
+            #print('faster bus')
     #         nextbus = b['title']
 
     # walk1 = getWalkTime(40.48474,  -74.43672, startLoc)
@@ -193,16 +198,16 @@ def nextBus():
 
 #     if request.method == 'POST':
 #         lat = request.form.get('lat', '')
-#         #print(lat)
+        #print(lat)
 #         lon = request.form.get('lon', '')
-#         #print(lon)
+        #print(lon)
 #         destLoc = request.form.get('destination', '')
-#         #print(destLoc)
+        #print(destLoc)
 #     else:
 #         startLoc = request.args.get('start', '')
-#         #print(startLoc)
+        #print(startLoc)
 #         destLoc = request.args.get('destination', '')
-#         #print(destLoc)        
+        #print(destLoc)        
 
 #     nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{0}/{1}'.format(lat, lon))
 #     nearby = json.loads(nearjson.text)
@@ -230,16 +235,16 @@ def nextBus():
 #                 try:
 #                     newEta = int(rt[j]['predictions'][busNo]['minutes'])
 #                 except IndexError:
-#                     #print('Index Error at j={0} busNo={1}'.format(j, busNo))
+                    #print('Index Error at j={0} busNo={1}'.format(j, busNo))
 #                     return 100000
              
 #             eta2 = getDestETA(bus, startLoc, destLoc, busNo)
-#             #print(bus) #bus
-#             #print(eta2) #bus ETA
+            #print(bus) #bus
+            #print(eta2) #bus ETA
 #             if (eta2 < eta):
 #                 next = pred
 #                 eta = eta2
-#                 #print('faster bus')
+                #print('faster bus')
 #                 nextbus = b['title']
 #                 start = stop
 #                 walk1 = walktemp

@@ -438,7 +438,7 @@ routes = {"a":{
 "cabaret",
 "redoak_a"]},
 
-"REXB":{
+"REX B":{
 "stops":["lipman",
 "college_a",
 "newstree",
@@ -461,7 +461,7 @@ routes = {"a":{
 "cabaret",
 "redoak_a"]},
 
-"REXL":{
+"REX L":{
 "stops":["lipman",
 "college_a",
 "newstree",
@@ -696,8 +696,8 @@ shortbus = {'A':'a',
 'F':'f',
 'H':'h',
 'LX':'lx',
-'REXB':'rexb',
-'REXL':'rexl',
+'REX B':'rexb',
+'REX L':'rexl',
 'All Campus':'s',
 'New Brunsquick 1 Shuttle':'w1',
 'New Brunsquick 2 Shuttle':'w2',
