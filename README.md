@@ -15,11 +15,11 @@ All the routing/server stuff is done in Python via the Flask microframework.  Th
 
 Coming Soon
 -----------
-Autocompleting search of all the buildings on the Rutgers New Brunswick campus.
-Better mobile scaling
+* Autocompleting search of all the buildings on the Rutgers New Brunswick campus.
+* Better mobile scaling
 
 Planned Features (hopefully soon)
 ---------------------------------
-Options on when to get going (the next few possibilities and arrival times)
-Lazy mode (least possible walking distance)
-One page website
+* Options on when to get going (the next few possibilities and arrival times)
+* Lazy mode (least possible walking distance)
+* One page website
