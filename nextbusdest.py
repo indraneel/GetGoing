@@ -178,6 +178,10 @@ def nextBus():
 
     if (eta == 100000):
         return render_template('error.html')
+
+    if (start == destLoc):
+        return render_template('walk.html', dest=destLoc, walk1=walk1)
+
     # print('done')
     return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 

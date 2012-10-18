@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/static/stylesheets/foundation.min.css">
+    <title>GetGoing</title>
+    {% endblock %}
+  </head>
+<body>
+  <div id="content">
+    <div class="row">
+      <div class="nine columns centered">
+        <div class="panel">
+            <div class="eleven columns centered">
+                <h1><a href="/">/GET/Going</a></h1>
+                <h5 class="subhead">NextBus++</h5>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="seven columns centered">
+            <div class="panel">
+                You should probably just <b>walk</b> to <b>{{dest}}</b>.<br /><br />
+                </br>
+                It'll only take <b>{{walk1}}</b> minutes.<br /><br />
+                <form name="twilioForm" action="/twilio" method="GET">
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div id="footer">
+    {% block footer %}
+    <div class="five columns centered">
+      <div class="panel">
+        <div class="five columns centered">by Lavi & <a href="http://indraneelpurohit.com">Indraneel</a>.</div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</body>
+
