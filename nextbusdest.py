@@ -112,10 +112,13 @@ def nextBus():
     # if(true):
     # print(lat)
     if (destLoc not in stops):
-        return render_template('error.html')
+        return render_template('error.html', error = 'Please provide a valid input. Remember that the input requres the entire stop name and is case-sensitive.)')
 
     nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{}/{}'.format(lat, lon))
     nearby = json.loads(nearJSON.text)
+
+    if (len(nearby) == 0):
+        return render_template('error.html', error='Please make sure your GPS coordinates are correct.')
     # print(nearby)
     # else:
     #     nearby = [startLoc]
@@ -177,7 +180,7 @@ def nextBus():
         leave = "OH SHIT RUN"
 
     if (eta == 100000):
-        return render_template('error.html')
+        return render_template('error.html', error='Please make sure you selected an operating stop.')
 
     if (start == destLoc):
         return render_template('walk.html', dest=destLoc, walk1=walk1)
