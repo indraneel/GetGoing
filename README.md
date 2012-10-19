@@ -17,7 +17,7 @@ Coming Soon
 -----------
 * Autocompleting search of all the buildings on the Rutgers New Brunswick campus.
 * Better mobile responsiveness
-* Error page
+* Selection of starting location
 
 Planned Features (hopefully soon)
 ---------------------------------
