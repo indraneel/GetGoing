@@ -103,9 +103,9 @@ def nextBus():
         startLoc = request.args.get('start', '')
         # print(startLoc)
         destLoc = request.args.get('destination', '')
-        # print(destLoc)        
+        print(destLoc)     
         lat = request.args.get('latitude', '')
-        # print(lat)
+        print(lat)
         lon = request.args.get('longitude', '')
         # print(lon)
 
