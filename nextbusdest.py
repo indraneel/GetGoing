@@ -111,6 +111,9 @@ def nextBus():
 
     # if(true):
     # print(lat)
+    if (destLoc not in stops):
+        return render_template('error.html')
+
     nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{}/{}'.format(lat, lon))
     nearby = json.loads(nearJSON.text)
     # print(nearby)
@@ -172,6 +175,13 @@ def nextBus():
     leave = next - walk1 - 1
     if (leave < 0):
         leave = "OH SHIT RUN"
+
+    if (eta == 100000):
+        return render_template('error.html')
+
+    if (start == destLoc):
+        return render_template('walk.html', dest=destLoc, walk1=walk1)
+
     # print('done')
     return render_template('nextdest.html', bus=nextbus, start=start, smins=next, dest=destLoc, dmins=eta, walk1 = walk1, leave=leave)
 
