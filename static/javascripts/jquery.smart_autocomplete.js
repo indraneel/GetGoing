@@ -246,7 +246,7 @@
             background: $(context).css("background"),
             borderColor: 'transparent',
             width: $(context).width(),
-            color: 'silver'
+            color: 'gray'
           });
 
           //trigger item over for first item
