@@ -112,7 +112,7 @@ def nextBus():
     # if(true):
     # print(lat)
     if (destLoc not in stops):
-        return render_template('error.html', error = 'Please provide a valid input. Remember that the input requres the entire stop name and is case-sensitive.)')
+        return render_template('error.html', error = 'Please provide a valid input. Remember that the input requres the entire stop name and is case-sensitive.')
 
     nearJSON = requests.get('http://nextbus.nodejitsu.com/nearby/{}/{}'.format(lat, lon))
     nearby = json.loads(nearJSON.text)
